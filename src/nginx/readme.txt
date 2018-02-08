@@ -1,0 +1,1 @@
+只做反向代理可以执行nginx-service-install.bat将nginx作为服务安装，注意默认配置是80端口，请先查看是否已经被占用
