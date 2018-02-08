@@ -1,2 +1,14 @@
 1.安装Nullsoft Install System
 2.使用Nullsoft Install System工具打开websoft.nsi进行编译安装
+
+mysql5.7.18 已被注释因为文件太大传不上来，自己去官方下载吧
+放在\src\database\mysql-5.7.18，websoft.nsi文件取消355行注释
+
+在\src\database文件夹下新建文件夹ProgramData，在ProgramData文件夹下新建data和upload
+
+src
+ |	database
+ |     |  mysql-5.7.18
+ |     |  ProgramData
+ |     |       |   data
+ |     |       |   upload
