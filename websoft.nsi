@@ -352,7 +352,7 @@ SectionEnd
   !insertmacro MUI_DESCRIPTION_TEXT ${vs} "Apache和php5.6需要vc11的支持，php7需要vc14的支持"
   !insertmacro MUI_DESCRIPTION_TEXT ${redis} "redis3.2 no sql 和 redis管理系统"
   !insertmacro MUI_DESCRIPTION_TEXT ${redisadmin} "redis管理系统"
-  !insertmacro MUI_DESCRIPTION_TEXT ${mysql5.7.18} "mysql5.7.18"
+;  !insertmacro MUI_DESCRIPTION_TEXT ${mysql5.7.18} "mysql5.7.18"
 !insertmacro MUI_FUNCTION_DESCRIPTION_END
 
 /******************************
