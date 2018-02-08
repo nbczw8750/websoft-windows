@@ -1,0 +1,74 @@
+主程序：nginx-1.10.3+apache2.4.25+php-5.6.29-nts-Win32-VC11-x64+php-7.0.15-nts-Win32-VC14-x64+php-7.1.1-nts-Win32-VC14-x64多版本共存
+
+1.4.1
+新增了源码加密扩展beast ，7.1同时补上了redis扩展
+1.4.0
+新增了phpmyadmin和kodexplorer，将memadmin和redisadmin合并到他们的程序安装
+php.ini默认开启php_mysqli.dll和php_mysql.dll
+新增了mysql5.7.18 64位
+1.3.0
+新增了yar扩展
+
+1.2.1
+修改了Apache虚拟目录配置文件
+1.2.0
+新增redis扩展和igbinary扩展（效率比序列化高），加长了Apache的超时时间
+1.1.1
+新增redis服务端，web管理，将Apache和nginx的根目录统一到wwwroot
+
+php-7.1.1暂无连接sql server的dll文件
+php7.0以上需要安装vs_setup目录下的vc14_x64.exe
+
+安装完成之后
+nginx目录下的start_nginx.bat
+浏览器上访问localhost:8888是否正常
+phpinfo地址:http://localhost/phpinfo.php
+探针地址:http://localhost/l.php
+memcached管理工具:http://localhost/memadmin/index.php 默认账号admin密码admin
+
+检测端口：
+首先检测下端口是否被占用，打开安装目录下\tools\port.bat，默认检测3306（mysql）,80（http），443（https）端口，比如https被占用，一般会被vmware会占用它，你可以选择关闭vmware或修改Apache配置
+打开安装目录下\Apache24\conf\httpd.conf,第527行注释掉就可以了。
+
+Apache：
+开启Apache需要安装setup\vs_setup目录下的vc11_x64.exe
+安装目录\Apache24目录下右键以管理员方式打开instal.bat安装Apache服务。uninstall.bat可以单独卸载Apache服务
+
+mysql：
+安装目录\database\mysql-5.7.18\mysql 下右键以管理员方式打开instal.bat安装mysql服务，uninstall.bat可以单独卸载mysql服务
+
+php：
+默认配置启动的是5.6.29版本，如果要启动7+需要安装vc14
+
+--------------------------------------------------------------------------------------------------
+
+oracle客户端组件安装完后要将oracle客户端目录添加到环境变量中
+不重启电脑使环境变量生效，在cmd下 输入 set path=C: 回车就行了
+
+windows开机自动开启nginx，需要将nginx目录下的start_nginx.bat文件复制到开始->程序->启动里面
+C:\Users\Administrator\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup
+
+关闭nginx环境用nginx目录下stop_nginx.bat批量文件
+
+开启memcached
+安装服务c:\memcached\memcached.exe -d install
+通过注册表键值来修改memcached的配置项。
+在运行中输入regedit.exe，然后导航到"HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\memcached"。
+修改其中的键值。例如你想增加memcached所使用的最大内存限制，可以修改ImagePath的值："c:\memcached\memcached.exe" -d runservice -m 512
+
+nginx配置文件在nginx\conf\nginx.conf，打开虚拟目录配置include "vhost/vhosts.conf";
+
+修改后重启nginx 可以用在cmd命令下，请切换到安装目录nginx文件夹下再输入以下命令
+输入检测一下
+nginx -t
+再输入加载
+nginx -s reload
+
+
+php连接sqlsrv需要安装
+setup\sqlsrv_client_setup文件下的microsoft_sql_server_2008_native_client_X64.msi
+
+redis3.2
+服务端请安装setup\redis\Redis-x64-3.2.100.msi,未安装.net framework4.5的请安装.net framework4.5
+web管理访问localhost\redisadmin  默认连接的是127.0.0.1 配置文件请修改wwwroot\redisadmin\includes\config.inc.php
+
